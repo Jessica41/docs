@@ -71,9 +71,9 @@ Nous vous proposons d'activer et d'utiliser notre solution de filtrage [Network 
 Cette solution vous permettra de gérer facilement les accès légitimes en complément de celles que vous aurez mises en place à travers votre système ESXi.
 
 
-Il est fortement recommandé de filtrer les accès légitimes de cette manière:
-La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.
-La régle 2  bloque tout le reste.
+Il est fortement recommandé de filtrer les accès légitimes de cette manière:  
+La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.  
+La régle 2  bloque tout le reste.  
 
 ![Network_Firewall](images/firewall_network_.png)
 
