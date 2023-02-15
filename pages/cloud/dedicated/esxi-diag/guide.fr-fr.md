@@ -1,0 +1,134 @@
+---
+title: 'Maitriser et sécuriser votre serveur dédié ESXi dès son 1er démarrage'
+slug: esxi-diag
+excerpt: 'Découvrez ou redécouvrez les différents moyens disponibles afin de sécuriser efficacement votre serveur dédié ESXi'
+section: 'Utilisation avancée'
+---
+
+
+## Objectif
+
+Cette documentation aura pour but de vous accompagner pour elaborer la meilleur sécurité pour votre systeme ESXi.
+Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres proposées par OVHcloud.
+
+
+> [!warning]
+> 
+> Récement, les système ESXi ont été victime d'une faille que de(s) groupe(s) mailveillants ont exploités très rapidement à travers les réseaux publiques.
+> Nous vous proposons des moyens rapides et à moyens/long termes également avec cette FAQ complémentaire, disponible [ici](https://docs.ovh.com/fr/dedicated/esxi-faq/).
+>
+
+
+### Rappel des bonnes pratiques de sécurité :
+
+* Mettez à jour régulièrement vos systèmes ESXi.
+* Restreignez l’accès aux seules adresses IP de confiance.
+* Désactivez les ports ainsi que les services inutilisés.
+* Assurez-vous que les accès à vos serveurs ou vos équipements réseaux sont limités, contrôlés et protégés avec des mots de passe robustes.
+* Sauvegardez vos données critiques dans des disques externes et des serveurs de backup protégés et isolés d’Internet.
+
+Optionnel:
+
+* Mettez en place des solutions de journalisation nécessaires pour contrôler les évènements survenus sur vos serveurs critiques et vos équipements réseaux.
+* Mettez en place des packs de sécurité pour la détection des actions malveillantes, des intrusions (IPS / NIDS) et pour le contrôle de la bande passante de trafic réseau.
+
+
+## Prérequis
+
+* Être connecté à l'[espace client OVHcloud](https://www.ovh.com/auth/?action=gotomanager&from=https://www.ovh.com/fr/&ovhSubsidiary=fr){.external}.
+* Possédez un serveur dédié avec la solution ESXi déployée.
+* Avoir souscris à une offre compatible avec notre [Network_Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/)
+
+
+## En pratique
+
+### fail2ban
+
+> [!warning]
+> Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur, celui-ci fonctionne comme un "fail2ban".
+> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot du système) les accès du compte administrateur sont vérrouilliés.
+> Il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
+> 
+
+Vérifier les logs d'accès, disponible via le fichier `/var/run/log/vobd.log`:
+
+```bash
+2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
+2023-02-13T16:22:22.897Z: [GenericCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
+2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535867us: [esx.audit.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
+```
+
+> [!primary]
+>
+> Pour contourner et continuer à utiliser les accès de votre compte administrateur dans toutes les situations, nous vos proposons d'activer votre [Network_Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/) (cf ci-dessous).
+>
+
+
+
+### Solution Network Firewall
+
+Nous vous proposons d'activer et d'utiliser notre solution de filtrage [Network Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/).
+Cette solution vous permettra de gérer facilement les accès légitimes en complément de celles que vous aurez mises en place à travers votre système ESXi.
+
+
+Il est fortement recommandé de filtrer les accès légitimes de cette manière:
+La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.
+La régle 2  bloque tout le reste.
+
+![Network_Firewall](image/firewall_network_.png)
+
+
+### Filtrage sous ESXi
+
+> [!primary]
+>
+> Vous avez également la possibilité de filtrer les services et accès des utilisateurs de votre système ESXi.
+> Ne prévilégiez que le strict nécessaire.
+>
+
+#### Manipulation via l'interface graphique
+
+*services*
+
+menu Host > Manage > services
+![services](images/slpd_.png)
+
+*règles de pare-feu*
+
+menu Networking > Firewall rules
+choisissez `Edit setting`:
+![rules](images/edit_fw_rule.png)
+
+éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.
+![custom](images/custom_fw_rule.png)
+
+
+#### Manipulation via le shell
+
+Statut sur l'état du filtrage ou ACL actuel :
+```bash
+esxcli network firewall ruleset list
+esxcli system account list
+```
+
+désactivez les services inutiles:
+
+service SLP
+```bash
+/etc/init.d/slpd stop
+esxcli network firewall ruleset set -r CIMSLP -e 0
+chkconfig slpd off
+```
+
+service SSH
+```bash
+/etc/init.d/SSH stop
+esxcli network firewall ruleset set -r sshServer -e 0
+```
+
+
+
+## Aller plus loin
+
+Échangez avec notre communauté d'utilisateurs sur <https://community.ovh.com>
+~                                                                                        
