@@ -65,9 +65,9 @@ Nous vous proposons d'activer et d'utiliser notre solution de filtrage [Network 
 Cette solution vous permettra de gérer facilement les accès légitimes en complément de celles que vous aurez mises en place à travers votre système ESXi.
 
 
-Il est fortement recommandé de filtrer les accès légitimes de cette manière:
-La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.
-La régle 2  bloque tout le reste.
+Il est fortement recommandé de filtrer les accès légitimes de cette manière:  
+La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.  
+La régle 2  bloque tout le reste.  
 
 ![Network_Firewall](images/firewall_network_.png)
 
@@ -81,7 +81,7 @@ La régle 2  bloque tout le reste.
 >
 
 > [!warning]
-> la désactivation des services *ssh* et *slp* est fortement conseillée.
+> la désactivation des services **ssh** et **slp** est fortement conseillée.
 >
 
 #### Manipulation via l'interface graphique
@@ -97,7 +97,7 @@ menu Host > Manage > services
 *règles de pare-feu*
 
 menu Networking > Firewall rules
-choisissez `Edit setting`:
+choisissez `Edit setting`:  
 ![rules](images/edit_fw_rule.png)
 
 éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.
