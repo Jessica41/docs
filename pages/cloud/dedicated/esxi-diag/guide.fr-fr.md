@@ -75,7 +75,7 @@ Il est fortement recommandé de filtrer les accès légitimes de cette manière:
 La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.
 La régle 2  bloque tout le reste.
 
-![Network_Firewall](image/firewall_network_.png)
+![Network_Firewall](images/firewall_network_.png)
 
 
 ### Filtrage sous ESXi
@@ -97,7 +97,7 @@ menu Host > Manage > services
 
 menu Networking > Firewall rules
 choisissez `Edit setting`:
-![rules](images/edit_fw_rule.png)
+![rules](images/edit_fw_rule_90.png)
 
 éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.
 ![custom](images/custom_fw_rule.png)
