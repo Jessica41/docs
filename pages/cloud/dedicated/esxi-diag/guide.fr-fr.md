@@ -8,8 +8,8 @@ section: 'Utilisation avancée'
 
 ## Objectif
 
-Cette documentation aura pour but de vous accompagner dans l'élaboration et la mise en place pour sécuriser au mieux, et selon vos besoins, votre systeme ESXi.  
-Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres proposées par OVHcloud.  
+Cette documentation aura pour but de vous accompagner pour elaborer la meilleur sécurité pour votre systeme ESXi.
+Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres proposées par OVHcloud.
 
 
 > [!warning]
@@ -22,7 +22,7 @@ Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres p
 ### Rappel des bonnes pratiques de sécurité :
 
 * Mettez à jour régulièrement vos systèmes ESXi.
-* Restreignez vos accès: aux utilisateurs,  aux seules adresses IP de confiance.
+* Restreignez l’accès aux seules adresses IP de confiance.
 * Désactivez les ports ainsi que les services inutilisés.
 * Assurez-vous que les accès à vos serveurs ou vos équipements réseaux sont limités, contrôlés et protégés avec des mots de passe robustes.
 * Sauvegardez vos données critiques dans des disques externes et des serveurs de backup protégés et isolés d’Internet.
@@ -46,24 +46,17 @@ Optionnel:
 
 
 > [!warning]
-> Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur, celui-ci fonctionne comme un "fail2ban".  
-> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot du système) les accès du compte administrateur sont vérrouilliés.  
-> Il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.  
+> Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur, celui-ci fonctionne comme un "fail2ban".
+> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot du système) les accès du compte administrateur sont vérrouilliés.
+> Il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
 > 
 
-Vérifier l'historique des tentatives d'accès, disponible via le fichier `/var/run/log/vobd.log`:  
-exemple:  
+historique des logs d'accès, disponible via le fichier `/var/run/log/vobd.log` en shell:
 ```bash
 2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 2023-02-13T16:22:22.897Z: [GenericCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535867us: [esx.audit.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 ```
-
-> [!primary]
->
-> Pour contourner et continuer à utiliser les accès de votre compte administrateur dans toutes les situations, nous vos proposons d'activer votre [Network_Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/) (cf ci-dessous).
->
-
 
 
 ### Solution Network Firewall
@@ -72,9 +65,9 @@ Nous vous proposons d'activer et d'utiliser notre solution de filtrage [Network 
 Cette solution vous permettra de gérer facilement les accès légitimes en complément de celles que vous aurez mises en place à travers votre système ESXi.
 
 
-Il est fortement recommandé de filtrer les accès légitimes de cette manière:  
-La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.  
-La régle 2  bloque tout le reste.  
+Il est fortement recommandé de filtrer les accès légitimes de cette manière:
+La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.
+La régle 2  bloque tout le reste.
 
 ![Network_Firewall](images/firewall_network_.png)
 
@@ -87,6 +80,10 @@ La régle 2  bloque tout le reste.
 > Ne prévilégiez que le strict nécessaire.
 >
 
+> [!warning]
+> la désactivation des services *ssh* et *slp* est fortement conseillée.
+>
+
 #### Manipulation via l'interface graphique
 
 *services*
@@ -94,11 +91,14 @@ La régle 2  bloque tout le reste.
 menu Host > Manage > services
 ![services](images/slpd_.png)
 
+
+
+
 *règles de pare-feu*
 
 menu Networking > Firewall rules
 choisissez `Edit setting`:
-![rules](images/edit_fw_rule_90.png)
+![rules](images/edit_fw_rule.png)
 
 éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.
 ![custom](images/custom_fw_rule.png)
@@ -131,5 +131,3 @@ esxcli network firewall ruleset set -r sshServer -e 0
 
 ## Aller plus loin
 
-Échangez avec notre communauté d'utilisateurs sur <https://community.ovh.com>
-~                                                                                        
