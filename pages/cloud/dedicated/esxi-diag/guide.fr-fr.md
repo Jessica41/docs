@@ -89,8 +89,9 @@ La régle 2  bloque tout le reste.
 *services*
 
 menu Host > Manage > services
-![services_slp](images/slpd_.png)
+modifiez la Policy comme sur l'exemple présenté:
 ![services_ssh](images/ssh_disabled_.png)
+![services_slp](images/slpd_.png)
 
 
 
