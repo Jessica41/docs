@@ -8,8 +8,8 @@ section: 'Utilisation avancée'
 
 ## Objectif
 
-Cette documentation aura pour but de vous accompagner pour elaborer la meilleur sécurité pour votre systeme ESXi.
-Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres proposées par OVHcloud.
+Cette documentation aura pour but de vous accompagner dans l'élaboration et la mise en place pour sécuriser au mieux, et selon vos besoins, votre systeme ESXi.  
+Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres proposées par OVHcloud.  
 
 
 > [!warning]
@@ -22,7 +22,7 @@ Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres p
 ### Rappel des bonnes pratiques de sécurité :
 
 * Mettez à jour régulièrement vos systèmes ESXi.
-* Restreignez l’accès aux seules adresses IP de confiance.
+* Restreignez vos accès: aux utilisateurs,  aux seules adresses IP de confiance.
 * Désactivez les ports ainsi que les services inutilisés.
 * Assurez-vous que les accès à vos serveurs ou vos équipements réseaux sont limités, contrôlés et protégés avec des mots de passe robustes.
 * Sauvegardez vos données critiques dans des disques externes et des serveurs de backup protégés et isolés d’Internet.
@@ -44,14 +44,15 @@ Optionnel:
 
 ### fail2ban
 
+
 > [!warning]
-> Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur, celui-ci fonctionne comme un "fail2ban".
-> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot du système) les accès du compte administrateur sont vérrouilliés.
-> Il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
+> Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur, celui-ci fonctionne comme un "fail2ban".  
+> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot du système) les accès du compte administrateur sont vérrouilliés.  
+> Il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.  
 > 
 
-Vérifier les logs d'accès, disponible via le fichier `/var/run/log/vobd.log`:
-
+Vérifier l'historique des tentatives d'accès, disponible via le fichier `/var/run/log/vobd.log`:  
+exemple:  
 ```bash
 2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 2023-02-13T16:22:22.897Z: [GenericCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
