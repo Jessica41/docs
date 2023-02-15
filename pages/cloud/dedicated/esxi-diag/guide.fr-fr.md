@@ -76,8 +76,9 @@ La régle 2  bloque tout le reste.
 
 > [!primary]
 >
-> Vous avez également la possibilité de filtrer les services et accès des utilisateurs de votre système ESXi.
-> Ne prévilégiez que le strict nécessaire.
+> Vous avez également la possibilité de filtrer les accès des utilisateurs de votre système ESXi.  
+> Aussi vous pourrez désactiver les services inutiles ou non sécurisés.  
+> Ne prévilégiez que le strict nécessaire.  
 >
 
 > [!warning]
