@@ -89,7 +89,8 @@ La régle 2  bloque tout le reste.
 *services*
 
 menu Host > Manage > services
-![services](images/slpd_.png)
+![services_slp](images/slpd_.png)
+![services_ssh](images/ssh_disabled_.png)
 
 
 
