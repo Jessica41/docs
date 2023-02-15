@@ -61,11 +61,12 @@ historique des logs d'accès, disponible via le fichier `/var/run/log/vobd.log` 
 
 ### Solution Network Firewall
 
-Nous vous proposons d'activer et d'utiliser notre solution de filtrage [Network Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/).
-Cette solution vous permettra de gérer facilement les accès légitimes en complément de celles que vous aurez mises en place à travers votre système ESXi.
+Nous vous proposons d'activer et d'utiliser notre solution de filtrage [Network Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/).  
+Cette solution vous permettra de gérer facilement les accès légitimes en complément de celles que vous aurez mises en place à travers votre système ESXi.  
 
+En effet, cette solution antiddos vous fera éviter le lock de votre compte administrateur.  
 
-Il est fortement recommandé de filtrer les accès légitimes de cette manière:  
+Il est donc recommandé de filtrer les accès légitimes de cette manière:  
 La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.  
 La régle 2  bloque tout le reste.  
 
@@ -96,12 +97,11 @@ modifiez la Policy comme sur l'exemple présenté:
 
 
 
-
 *règles de pare-feu*
 
 menu Networking > Firewall rules
 choisissez `Edit setting`:  
-![rules](images/edit_fw_rule.png)
+![rules](images/firewall_web_.png)
 
 éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.
 ![custom](images/custom_fw_rule.png)
