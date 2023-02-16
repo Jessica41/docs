@@ -8,14 +8,14 @@ section: 'Utilisation avancée'
 
 ## Objectif
 
-Cette documentation aura pour but de vous accompagner pour elaborer la meilleur sécurité pour votre systeme ESXi.
+Cette documentation aura pour but de vous accompagner pour élaborer la meilleur sécurité pour votre systeme ESXi.  
 Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres proposées par OVHcloud.
 
 
 > [!warning]
 > 
-> Récement, les système ESXi ont été victime d'une faille que de(s) groupe(s) mailveillants ont exploités très rapidement à travers les réseaux publiques.
-> Nous vous proposons des moyens rapides et à moyens/long termes également avec cette FAQ complémentaire, disponible [ici](https://docs.ovh.com/fr/dedicated/esxi-faq/).
+> Récemment, les systèmes ESXi ont été victime d'une faille que de(s) groupe(s) malveillant(s) ont exploités très rapidement à travers les réseaux publiques.  
+> Nous vous proposons des moyens rapides et, à moyens/longs termes, également avec cette FAQ complémentaire, disponible [ici](https://docs.ovh.com/fr/dedicated/esxi-faq/).
 >
 
 
@@ -37,7 +37,7 @@ Optionnel:
 
 * Être connecté à l'[espace client OVHcloud](https://www.ovh.com/auth/?action=gotomanager&from=https://www.ovh.com/fr/&ovhSubsidiary=fr){.external}.
 * Possédez un serveur dédié avec la solution ESXi déployée.
-* Avoir souscris à une offre compatible avec notre [Network_Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/)
+* Avoir souscrit à une offre compatible avec notre [Network_Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/)
 
 
 ## En pratique
@@ -47,11 +47,11 @@ Optionnel:
 
 > [!warning]
 > Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur, celui-ci fonctionne comme un "fail2ban".
-> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot du système) les accès du compte administrateur sont vérrouilliés.
-> Il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
+> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot après déploiement) les accès du compte administrateur sont vérrouilliés.
+> Dès lors, il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
 > 
 
-historique des logs d'accès, disponible via le fichier `/var/run/log/vobd.log` en shell:
+l'historique des logs d'accès est disponible via le fichier `/var/run/log/vobd.log` en shell:
 ```bash
 2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 2023-02-13T16:22:22.897Z: [GenericCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
@@ -62,13 +62,13 @@ historique des logs d'accès, disponible via le fichier `/var/run/log/vobd.log` 
 ### Solution Network Firewall
 
 Nous vous proposons d'activer et d'utiliser notre solution de filtrage [Network Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/).  
-Cette solution vous permettra de gérer facilement les accès légitimes en complément de celles que vous aurez mises en place à travers votre système ESXi.  
+Cette solution vous permettra de gérer facilement les accès légitimes en complément de ceux que vous aurez mis en place à travers votre système ESXi.  
 
-En effet, cette solution antiddos vous fera éviter le lock de votre compte administrateur.  
+En effet, cette solution antiddos vous éviteras le lock de votre compte administrateur.  
 
 Il est donc recommandé de filtrer les accès légitimes de cette manière:  
-La régle 1  autorise les accès externes qui auront besoin d'accèder au manager.  
-La régle 2  bloque tout le reste.  
+La régle 1 : autorise les accès externes qui auront besoin d'accèder au manager.  
+La régle 2 : bloque tout le reste.  
 
 ![Network_Firewall](images/firewall_network_.png)
 
@@ -83,7 +83,7 @@ La régle 2  bloque tout le reste.
 >
 
 > [!warning]
-> la désactivation des services **ssh** et **slp** est fortement conseillée.
+> La désactivation des services **ssh** et **slp** est fortement conseillée.
 >
 
 #### Manipulation via l'interface graphique
@@ -91,7 +91,7 @@ La régle 2  bloque tout le reste.
 *services*
 
 menu Host > Manage > services
-modifiez la Policy comme sur l'exemple présenté:
+modifiez la `Policy` comme sur l'exemple ci-dessous:
 ![services_ssh](images/ssh_disabled_.png)
 ![services_slp](images/slpd_.png)
 
