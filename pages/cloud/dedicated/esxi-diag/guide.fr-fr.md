@@ -90,8 +90,9 @@ La régle 2 (Priority 1) : bloque tout le reste.
 
 *services*
 
-menu Host > Manage > services
-modifiez la `Policy` comme sur l'exemple présenté:
+menu `Host` > `Manage` > `services`  
+modifiez la `Policy` comme sur l'exemple présenté et choisissez l'option `Start an stop manually` pour une désactivation maîtrisée.  
+
 ![services_ssh](images/ssh_disabled_.png)
 ![services_slp](images/slpd_.png)
 
@@ -99,11 +100,14 @@ modifiez la `Policy` comme sur l'exemple présenté:
 
 *règles de pare-feu*
 
-menu Networking > Firewall rules
+menu `Networking` > `Firewall rules`  
 choisissez `Edit setting`:  
+
 ![rules](images/firewall_web_.png)
 
-éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.
+
+éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.  
+
 ![custom](images/custom_fw_rule.png)
 
 
