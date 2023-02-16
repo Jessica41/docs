@@ -67,8 +67,8 @@ Cette solution vous permettra de gérer facilement les accès légitimes en comp
 En effet, cette solution antiddos vous éviteras le lock de votre compte administrateur.  
 
 Il est donc recommandé de filtrer les accès légitimes de cette manière:  
-La régle 1 : autorise les accès externes qui auront besoin d'accèder au manager.  
-La régle 2 : bloque tout le reste.  
+La régle 1 (Priority 0) : autorise les accès externes qui auront besoin d'accèder au manager.  
+La régle 2 (Priority 1) : bloque tout le reste.  
 
 ![Network_Firewall](images/firewall_network_.png)
 
