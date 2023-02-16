@@ -44,11 +44,13 @@ Optionnel:
 
 ### fail2ban natif
 
-
-> [!warning]
+rappel sur sa définition
+> [!info]
 > Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur.  
 > En effet, en cas de plusieurs tentatives érronées les accès liés au compte administrateur seront vérrouilliés temporairement.  
 > Ceci afin de protégéger votre système et ainsi d'éviter les tentatives de connexions infructueuses, qui auront comme impact de surcharger votre machine le cas échéant.  
+
+> [!warning]
 > Dès lors, si vous souhaitez réinitialiser le décompte du vérrouillage , il vous sera nécessaire de redémarrer votre solution ESXi.  
 > 
 
