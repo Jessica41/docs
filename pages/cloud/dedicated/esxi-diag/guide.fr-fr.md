@@ -47,8 +47,9 @@ Optionnel:
 
 > [!warning]
 > Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur.  
-> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot après installation) les accès du compte administrateur sont vérrouilliés.
-> Dès lors, il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
+> En effet, en cas de plusieurs tentatives érronées les accès liés au compte administrateur seront vérrouilliés temporairement.  
+> Ceci afin de protégéger votre système et ainsi d'éviter les tentatives de connexions infructueuses, qui auront comme impact de surcharger votre machine le cas échéant.  
+> Dès lors, si vous souhaitez réinitialiser le décompte du vérrouillage , il vous sera nécessaire de redémarrer votre solution ESXi.  
 > 
 
 Il est possible de consulter l'historique des logs d'accès via les fichiers suivants en shell:  
@@ -60,7 +61,7 @@ Il est possible de consulter l'historique des logs d'accès via les fichiers sui
 2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535867us: [esx.audit.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 ```
 
-`/var/run/log/hostd.log` logs de l'hôte (accès interface web):
+`/var/run/log/hostd.log` logs de l'hôte (tâches, accès interface web,etc...):
 ```bash
 2023-02-16T13:35:48.829Z info hostd[2099631] [Originator@6876 sub=Vimsvc.ha-eventmgr opID=esxui-e70a-159a user=root] Event 147 : User root@xxx.xxx.xxx.xxx logged out (login time: Thursday, 16 February, 2023 01:26:42 PM, number of API invocations: 12, user agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36)
 2023-02-16T13:36:09.152Z info hostd[2099625] [Originator@6876 sub=Default opID=esxui-eabe-159d] Accepted password for user root from xxx.xxx.xxx.xxx
