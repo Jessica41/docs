@@ -66,7 +66,9 @@ Il est possible de consulter l'historique des logs d'accès via les fichiers sui
 2023-02-16T13:36:09.152Z info hostd[2099625] [Originator@6876 sub=Default opID=esxui-eabe-159d] Accepted password for user root from xxx.xxx.xxx.xxx
 ```
 
+Toutes ces informations sont également disponibles à travers l'interface d'administration web:  
 
+![interface](images/gui_logs_.png)
 
 ### Solution Network Firewall
 
