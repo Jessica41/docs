@@ -67,6 +67,7 @@ Il est possible de consulter l'historique des logs d'accès via les fichiers sui
 ```
 
 Toutes ces informations sont également disponibles à travers l'interface d'administration web:  
+menu `Host` > `Monitor`  
 
 ![interface](images/gui_logs_.png)
 
