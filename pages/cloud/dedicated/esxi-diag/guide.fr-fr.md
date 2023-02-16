@@ -1,21 +1,21 @@
 ---
-title: 'Maitriser et sécuriser votre serveur dédié ESXi dès son 1er démarrage'
+title: 'Maîtriser et sécuriser votre serveur dédié ESXi dès son 1er démarrage'
 slug: esxi-diag
-excerpt: 'Découvrez ou redécouvrez les différents moyens disponibles afin de sécuriser efficacement votre serveur dédié ESXi'
+excerpt: 'Découvrez ou redécouvrez les différents moyens disponibles vous permettant de sécuriser efficacement votre serveur dédié ESXi'
 section: 'Utilisation avancée'
 ---
 
 
 ## Objectif
 
-Cette documentation aura pour but de vous accompagner pour élaborer la meilleur sécurité pour votre systeme ESXi.  
-Nous verrons les fonctions embarquées que propose vmware, mais aussi d'autres proposées par OVHcloud.
+Cette documentation aura pour but de vous accompagner pour élaborer au mieux la sécurisation pour votre système ESXi.  
+Nous verrons les fonctions embarquées que propose vmware, mais aussi celles proposées par OVHcloud.
 
 
 > [!warning]
 > 
 > Récemment, les systèmes ESXi ont été victime d'une faille que de(s) groupe(s) malveillant(s) ont exploités très rapidement à travers les réseaux publiques.  
-> Nous vous proposons des moyens rapides et, à moyens/longs termes, également avec cette FAQ complémentaire, disponible [ici](https://docs.ovh.com/fr/dedicated/esxi-faq/).
+> Nous vous proposons des moyens rapides et, à moyens/longs termes également, avec cette FAQ complémentaire, disponible [ici](https://docs.ovh.com/fr/dedicated/esxi-faq/).
 >
 
 
@@ -37,21 +37,21 @@ Optionnel:
 
 * Être connecté à l'[espace client OVHcloud](https://www.ovh.com/auth/?action=gotomanager&from=https://www.ovh.com/fr/&ovhSubsidiary=fr){.external}.
 * Possédez un serveur dédié avec la solution ESXi déployée.
-* Avoir souscrit à une offre compatible avec notre [Network_Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/)
+* Avoir souscrit à une offre compatible avec notre fonctionnalité [Network_Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/)
 
 
 ## En pratique
 
-### fail2ban
+### fail2ban natif
 
 
 > [!warning]
 > Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur.  
-> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot après déploiement) les accès du compte administrateur sont vérrouilliés.
+> En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot après installation) les accès du compte administrateur sont vérrouilliés.
 > Dès lors, il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
 > 
 
-l'historique des logs d'accès est disponible via le fichier `/var/run/log/vobd.log` en shell:
+Il est possible de consulter l'historique des logs d'accès via le fichier `/var/run/log/vobd.log` en shell:  
 ```bash
 2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 2023-02-13T16:22:22.897Z: [GenericCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
@@ -64,10 +64,10 @@ l'historique des logs d'accès est disponible via le fichier `/var/run/log/vobd.
 Nous vous proposons d'activer et d'utiliser notre solution de filtrage [Network Firewall](https://docs.ovh.com/fr/dedicated/firewall-network/).  
 Cette solution vous permettra de gérer facilement les accès légitimes en complément de ceux que vous aurez mis en place à travers votre système ESXi.  
 
-En effet, cette solution antiddos vous éviteras le lock de votre compte administrateur.  
+En effet, cette solution anti-DDOS vous évitera le lock inopiné de votre compte administrateur.  
 
 Il est donc recommandé de filtrer les accès légitimes de cette manière:  
-La régle 1 (Priority 0) : autorise les accès externes qui auront besoin d'accèder au manager.  
+La régle 1 (Priority 0) : autorise les accès externes qui auront besoin d'accèder à votre système ESXi.  
 La régle 2 (Priority 1) : bloque tout le reste.  
 
 ![Network_Firewall](images/firewall_network_.png)
@@ -91,7 +91,7 @@ La régle 2 (Priority 1) : bloque tout le reste.
 *services*
 
 menu Host > Manage > services
-modifiez la `Policy` comme sur l'exemple ci-dessous:
+modifiez la `Policy` comme sur l'exemple présenté:
 ![services_ssh](images/ssh_disabled_.png)
 ![services_slp](images/slpd_.png)
 
