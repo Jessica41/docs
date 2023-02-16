@@ -46,7 +46,7 @@ Optionnel:
 
 
 > [!warning]
-> Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur, celui-ci fonctionne comme un "fail2ban".
+> Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur.  
 > En effet, en cas de plusieurs tentatives érronées (et lors du 1er boot après déploiement) les accès du compte administrateur sont vérrouilliés.
 > Dès lors, il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
 > 
