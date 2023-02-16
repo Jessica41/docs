@@ -51,12 +51,21 @@ Optionnel:
 > Dès lors, il est donc nécessaire de redémarrer une fois de plus votre solution ESXi lors de son premier démarrage.
 > 
 
-Il est possible de consulter l'historique des logs d'accès via le fichier `/var/run/log/vobd.log` en shell:  
+Il est possible de consulter l'historique des logs d'accès via les fichiers suivants en shell:  
+
+`/var/run/log/vobd.log` logs monitoring
 ```bash
 2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 2023-02-13T16:22:22.897Z: [GenericCorrelator] 410535559us: [vob.user.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 2023-02-13T16:22:22.897Z: [UserLevelCorrelator] 410535867us: [esx.audit.account.locked] Remote access for ESXi local user account 'root' has been locked for 900 seconds after 6 failed login attempts.
 ```
+
+`/var/run/log/hostd.log` logs de l'hôte (accès interface web):
+```bash
+2023-02-16T13:35:48.829Z info hostd[2099631] [Originator@6876 sub=Vimsvc.ha-eventmgr opID=esxui-e70a-159a user=root] Event 147 : User root@xxx.xxx.xxx.xxx logged out (login time: Thursday, 16 February, 2023 01:26:42 PM, number of API invocations: 12, user agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36)
+2023-02-16T13:36:09.152Z info hostd[2099625] [Originator@6876 sub=Default opID=esxui-eabe-159d] Accepted password for user root from xxx.xxx.xxx.xxx
+```
+
 
 
 ### Solution Network Firewall
