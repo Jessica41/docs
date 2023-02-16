@@ -87,13 +87,13 @@ La régle 2 (Priority 1) : bloque tout le reste.
 > [!primary]
 >
 > Vous avez également la possibilité de filtrer les accès des utilisateurs de votre système ESXi.  
-> Aussi vous pourrez désactiver les services inutiles ou non sécurisés.  
-> Ne prévilégiez que le strict nécessaire.  
+> Aussi vous pourrez désactiver les services inutiles.  
 >
 
 > [!warning]
-> La désactivation des services **ssh** et **slp** est fortement conseillée.
->
+> La désactivation des services **ssh** et **slp** est fortement conseillée.  
+> Ceci est valable également pour les accès en **shell**.  
+> Ne prévilégiez que le strict nécessaire pour chacun de vos besoins.  
 
 #### Manipulation via l'interface graphique
 
