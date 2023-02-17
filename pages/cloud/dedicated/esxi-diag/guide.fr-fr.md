@@ -44,7 +44,7 @@ Optionnel:
 
 ### fail2ban natif
 
-rappel de définition et de principe de fonctionnement:
+rappel avec sa définition et son principe de fonctionnement:
 > [!info]
 > Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur.  
 > En effet, en cas de plusieurs tentatives érronées les accès liés au compte administrateur seront vérrouilliés temporairement.  
