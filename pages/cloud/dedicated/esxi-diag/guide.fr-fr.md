@@ -48,10 +48,11 @@ rappel avec sa définition et son principe de fonctionnement:
 > [!info]
 > Le système ESXi embarque un mécanisme de sécurité lié au compte administrateur.  
 > En effet, en cas de plusieurs tentatives érronées les accès liés au compte administrateur seront vérrouilliés temporairement.  
-> Ceci afin de protégéger votre système et ainsi d'éviter les tentatives de connexions infructueuses, qui auront comme impact de surcharger votre machine le cas échéant.  
+> Ceci afin de protégéger votre système et ainsi d'éviter les tentatives de connexions infructueuses, qui auront comme impact de surcharger les ressources de votre machine le cas échéant.  
 
 > [!warning]
-> Dès lors, si vous souhaitez réinitialiser le décompte du vérrouillage , il vous sera nécessaire de redémarrer votre solution ESXi.  
+> Dès lors, si vous souhaitez utiliser votre système immédiatement, il vous faudra réinitialiser le décompte du vérrouillage.  
+> Pour cela, il vous sera nécessaire de redémarrer votre solution ESXi une fois supplémentaire.    
 > 
 
 Il est possible de consulter l'historique des logs d'accès via les fichiers suivants en shell:  
