@@ -116,9 +116,9 @@ Menu `Host` > `Manage` > `services`
 Modifiez la `Policy` comme sur l'exemple présenté et choisissez l'option `Start an stop manually` afin d'éviter que le service ne soit actif au démarrage du serveur.
 
 Arrêtez le service:  
-![services_ssh](images/stop_service.png)
+![services_ssh](images/stop_service.png)  
 Selectionnez la `Policy`:  
-![services_ssh](images/ssh_disabled_.png)
+![services_ssh](images/ssh_disabled_.png)  
 Appliquer/Vérifiez les mêmes paramètres pour le service `slpd`:  
 ![services_slp](images/slpd_.png)
 
