@@ -88,9 +88,9 @@ Cette solution vous permettra de gérer facilement les accès légitimes en comp
 
 Cette solution vous évitera antre autres le verrouillage inopiné de votre compte administrateur en cas d'attaque.
 
-Il est donc recommandé de filtrer les accès légitimes de cette manière:
-La régle 1 (Priority 0) : autorise les accès externes qui auront besoin d'accèder à votre système ESXi.
-La régle 2 (Priority 1) : bloque tout le reste.
+Il est donc recommandé de filtrer les accès légitimes de cette manière:  
+La régle 1 (Priority 0) : autorise les accès externes qui auront besoin d'accèder à votre système ESXi.  
+La régle 2 (Priority 1) : bloque tout le reste.  
 
 ![Network_Firewall](images/firewall_network_.png)
 
