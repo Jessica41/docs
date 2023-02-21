@@ -132,8 +132,8 @@ choisissez `Edit settings`:
 ![rules](images/firewall_web_.png)
 
 
-Éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.
-exemple avec une adresse privée:
+Éditez la règle pour n'ajouter que la ou les adresses IP, ou encore réseau(x), à pouvoir se connecter à votre système ESXi.  
+exemple avec une adresse privée:  
 ![custom](images/custom_fw_rule.png)
 
 
