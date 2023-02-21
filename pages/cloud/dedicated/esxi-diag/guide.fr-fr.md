@@ -76,8 +76,8 @@ Il est possible de consulter l'historique des logs d'accès dans les fichiers su
 2023-02-21T08:44:19.712Z info hostd[2101004] [Originator@6876 sub=Vimsvc.ha-eventmgr opID=esxui-d48c-26a4] Event 175 : Cannot login root@xxx.xxx.xxx.xxx
 ```
 
-Toutes ces informations sont également disponibles à travers l'interface d'administration web:
-Menu `Host` > `Monitor`
+Toutes ces informations sont également disponibles à travers l'interface d'administration web:  
+Menu `Host` > `Monitor`  
 
 ![interface](images/gui_logs_.png)
 
@@ -112,8 +112,8 @@ La régle 2 (Priority 1) : bloque tout le reste.
 
 *Services*
 
-Menu `Host` > `Manage` > `services`
-Modifiez la `Policy` comme sur l'exemple présenté et choisissez l'option `Start an stop manually` afin d'éviter que le service ne soit actif au démarrage du serveur.
+Menu `Host` > `Manage` > `services`  
+Modifiez la `Policy` comme sur l'exemple présenté et choisissez l'option `Start an stop manually` afin d'éviter que le service ne soit actif au démarrage du serveur.  
 
 Arrêtez le service:  
 ![services_ssh](images/stop_service.png)  
