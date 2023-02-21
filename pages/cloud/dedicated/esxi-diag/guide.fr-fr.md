@@ -13,7 +13,7 @@ En particulier, nous allons voir comment:<br>
 * limiter l'accès à votre ESXi à une adresse IP ou uneplage réseau spécifique.
 * désactiver des services augmentant la surface d'attaque de votre serveur.
 
-Nous nous appuierrons pour cela sur les fonctions embarquées que propose VMware, mais aussi celles offertes par OVHcloud.
+Nous nous appuierons pour cela sur les fonctions embarquées que propose VMware, mais aussi celles offertes par OVHcloud.
 
 
 > [!warning]
@@ -115,11 +115,11 @@ La régle 2 (Priority 1) : bloque tout le reste.
 Menu `Host` > `Manage` > `services`
 Modifiez la `Policy` comme sur l'exemple présenté et choisissez l'option `Start an stop manually` afin d'éviter que le service ne soit actif au démarrage du serveur.
 
-Arrêtez le service
+Arrêtez le service:  
 ![services_ssh](images/stop_service.png)
-Selectionnez la `Policy`
+Selectionnez la `Policy`:  
 ![services_ssh](images/ssh_disabled_.png)
-Appliquer/Vérifiez les mêmes paramètres pour le service slpd
+Appliquer/Vérifiez les mêmes paramètres pour le service `slpd`:  
 ![services_slp](images/slpd_.png)
 
 
