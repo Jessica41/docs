@@ -185,7 +185,7 @@ Changer le statut du tag en le désactivant:
 ```bash
 esxcli network firewall ruleset set --ruleset-id vSphereClient --allowed-all false
 ```
-Ajouter l'adresse préivée légitime 192.168.1.10:
+Ajouter l'adresse privée légitime 192.168.1.10:
 ```bash
 esxcli network firewall ruleset allowedip add --ruleset-id vSphereClient --ip-address 192.168.1.10
 ```
